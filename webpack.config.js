@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve("build"),
     filename: "index.js",
@@ -10,18 +10,27 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      // { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      // TypeScript files
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: "ts-loader", // You can use 'ts-loader' or 'babel-loader' with '@babel/preset-typescript'
+      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/inline',
+        type: "asset/inline",
       },
     ],
   },
   externals: {
     react: "react",
+  },
+  resolve: {
+    extensions: [".ts", ".tsx"],
   },
 };
