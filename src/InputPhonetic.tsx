@@ -10,7 +10,7 @@ import {
     Typography,
 } from "@mui/material";
 import React, { FC, useEffect, useState } from "react";
-import { common_java, full_data } from "./data_full";
+import { commonJavanese, phoneticMap } from "./data";
 import "./style.css";
 
 const STORAGE_KEY = "previous_phonetic_input";
@@ -33,7 +33,7 @@ const BtnInput: FC<BtnInputProps> = ({ character, onClick }) => (
         }}
         label={
             <span
-                className="fonetis"
+                className="phonetic"
                 style={{
                     fontSize: "1.3rem",
                 }}
@@ -112,7 +112,7 @@ interface InputPhoneticProps {
 export const InputPhonetic: FC<InputPhoneticProps> = ({
     addValue,
     useRemember = true,
-    dataDefault = common_java,
+    dataDefault = commonJavanese,
     height = "300px",
     sx = {},
     ...rest
@@ -133,7 +133,7 @@ export const InputPhonetic: FC<InputPhoneticProps> = ({
                             setData(dataDefault);
                             setMore(false);
                         } else {
-                            setData(full_data);
+                            setData(phoneticMap);
                             setMore(true);
                         }
                     }}

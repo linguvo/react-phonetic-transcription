@@ -22,7 +22,7 @@
     "@mui/material": "^6.1.9",
     "@mui/styled-engine": "^6.1.9",
     "@mui/icons-material": "^6.1.9",
-    "react": ">=17.0.0"
+    "react": ">=18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

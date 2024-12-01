@@ -1,14 +1,13 @@
 @font-face {
     font-family: "phonetic-alphabet-regular";
-    src: url("./css/fonetis/Fonetis.ttf")
+    src: url("./css/phonetic/Fonetis.ttf")
             format("woff"),
-        url("./css/fonetis/Fonetis.ttf")
+        url("./css/phonetic/Fonetis.ttf")
             format("opentype"),
-        url("./css/fonetis/Fonetis.ttf")
+        url("./css/phonetic/Fonetis.ttf")
             format("truetype");
 }
 
-
-.fonetis{
+.phonetic{
     font-family: 'phonetic-alphabet-regular', sans-serif;
 }

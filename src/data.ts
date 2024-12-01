@@ -1,4 +1,4 @@
-const full_data = [
+const phoneticMap = [
     {
         label: "A",
         data: "ɑæɐɑ̃",
@@ -190,6 +190,6 @@ const full_data = [
     },
 ];
 
-const common_java = `abGi l|myunO~Urtkh?,cd]pseEgjI-wo&¥+.‚K'q"AzJLHfR`.split("");
+const commonJavanese = `abGi l|myunO~Urtkh?,cd]pseEgjI-wo&¥+.‚K'q"AzJLHfR`.split("");
 
-export { full_data, common_java };
+export { phoneticMap, commonJavanese };

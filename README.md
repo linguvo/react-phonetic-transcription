@@ -13,11 +13,11 @@ Let me know what you want. You can write issue on my repo.
 ```js
 
 import React,{useState} from "react";
-import { InputPhonetic, TextToPhonetic } from "react-phonetic-transcription";
+import { InputPhonetic } from "react-phonetic-transcription";
 
 const [text,setText] = useState("");
 
-<span className="fonetis">
+<span className="phonetic">
     {text}
 </span>
 

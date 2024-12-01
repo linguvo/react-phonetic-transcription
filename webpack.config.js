@@ -10,8 +10,6 @@ module.exports = {
   },
   module: {
     rules: [
-      // { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-      // TypeScript files
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,

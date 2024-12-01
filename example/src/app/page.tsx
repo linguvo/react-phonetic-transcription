@@ -11,7 +11,7 @@ export default function Home() {
         Input Phonetic
       </h1>
 
-      <span className="fonetis text-lg">
+      <span className="phonetic text-lg">
         {text}
       </span>
 
