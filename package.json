@@ -1,6 +1,6 @@
 {
   "name": "react-phonetic-transcription",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Phonetic transcription tools with react js for input, outputing, etc",
   "main": "./build/index.js",
   "scripts": {
@@ -10,28 +10,28 @@
     "phonetic",
     "transcription"
   ],
-  "author": "albirrkarim",
+  "author": "Linguvo",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/albirrkarim/react-phonetic-transcription"
+    "url": "https://github.com/linguvo/react-phonetic-transcription"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
-    "@mui/material": "^5.5.3",
-    "@mui/styled-engine": "^5.5.2",
-    "@mui/icons-material": "^5.6.0",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/material": "^6.1.9",
+    "@mui/styled-engine": "^6.1.9",
+    "@mui/icons-material": "^6.1.9",
     "react": ">=17.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.8",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "babel-loader": "^8.2.4",
-    "css-loader": "^6.7.1",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.71.0",
-    "webpack-cli": "^4.9.2"
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   }
 }

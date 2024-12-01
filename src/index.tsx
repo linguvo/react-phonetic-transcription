@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FC } from "react";
 import {
   Button,
   Chip,
   Typography,
   Box,
-  Grid,
   Toolbar,
   Card,
   CardContent,
-  IconButton,
 } from "@mui/material";
 import "./style.css";
 import { common_java, full_data } from "./data_full";
@@ -18,7 +16,12 @@ import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 
 const STORAGE_KEY = "previous_phonetic_input";
 
-const BtnInput = ({ character, onClick }) => (
+interface BtnInputProps {
+  character: string;
+  onClick: () => void;
+}
+
+const BtnInput: FC<BtnInputProps> = ({ character, onClick }) => (
   <Chip
     onClick={onClick}
     sx={{
@@ -35,24 +38,27 @@ const BtnInput = ({ character, onClick }) => (
           fontSize: "1.3rem",
         }}
       >
-        {character == " " ? "space" : character}
+        {character === " " ? "space" : character}
       </TextToPhonetic>
     }
   />
 );
 
-const PreviousData = ({ addValue }) => {
-  const [data, setData] = useState([]);
+interface PreviousDataProps {
+  addValue: (value: string) => void;
+}
+
+const PreviousData: FC<PreviousDataProps> = ({ addValue }) => {
+  const [data, setData] = useState<string[]>([]);
 
   useEffect(() => {
     try {
-      var a = localStorage.getItem(STORAGE_KEY);
-      if (a) {
-        a = JSON.parse(a);
-        setData(a);
+      const storedData = localStorage.getItem(STORAGE_KEY);
+      if (storedData) {
+        setData(JSON.parse(storedData));
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }, []);
 
@@ -62,7 +68,7 @@ const PreviousData = ({ addValue }) => {
         <BtnInput
           key={idx}
           character={item}
-          onClick={async () => {
+          onClick={() => {
             remember(item);
             addValue(item);
           }}
@@ -72,54 +78,57 @@ const PreviousData = ({ addValue }) => {
   );
 };
 
-function remember(text) {
+function remember(text: string): void {
   try {
-    var before = localStorage.getItem(STORAGE_KEY);
+    let previousData: string[] = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
 
-    if (before) {
-      before = JSON.parse(before);
-
-      if (!before.includes(text)) {
-        before.unshift(text);
-      }
-
-      if (before.length > 20) {
-        before.pop();
-      }
-
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(before));
-    } else {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([text]));
+    if (!previousData.includes(text)) {
+      previousData.unshift(text);
     }
+
+    if (previousData.length > 20) {
+      previousData.pop();
+    }
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(previousData));
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
-export function TextToPhonetic({ children, ...rest }) {
-  return (
-    <span className="fonetis" {...rest}>
-      {children}
-    </span>
-  );
+interface TextToPhoneticProps extends React.HTMLAttributes<HTMLSpanElement> {
+  children: React.ReactNode;
 }
 
-export function InputPhonetic({
+export const TextToPhonetic: FC<TextToPhoneticProps> = ({ children, ...rest }) => (
+  <span className="fonetis" {...rest}>
+    {children}
+  </span>
+);
+
+interface InputPhoneticProps {
+  addValue: (value: string) => void;
+  useRemember?: boolean;
+  dataDefault?: string[] | { label: string; data: string }[];
+  height?: string;
+  sx?: Record<string, any>;
+  [key: string]: any;
+}
+
+export const InputPhonetic: FC<InputPhoneticProps> = ({
   addValue,
   useRemember = true,
   dataDefault = common_java,
   height = "300px",
   sx = {},
   ...rest
-}) {
+}) => {
   const sxDefault = {
     maxWidth: "500px",
   };
 
   const [data, setData] = useState(dataDefault);
   const [more, setMore] = useState(false);
-
-  //https://ipa.typeit.org/full/
 
   return (
     <Box sx={{ ...sx, ...sxDefault }} {...rest}>
@@ -157,12 +166,12 @@ export function InputPhonetic({
           )}
 
           {data.map((item, idx) => {
-            if (typeof item == "string") {
+            if (typeof item === "string") {
               return (
                 <BtnInput
                   key={idx}
                   character={item}
-                  onClick={async () => {
+                  onClick={() => {
                     if (useRemember) {
                       remember(item);
                     }
@@ -180,7 +189,7 @@ export function InputPhonetic({
                     <BtnInput
                       key={index}
                       character={itemChild}
-                      onClick={async () => {
+                      onClick={() => {
                         if (useRemember) {
                           remember(itemChild);
                         }
@@ -196,6 +205,6 @@ export function InputPhonetic({
       </Card>
     </Box>
   );
-}
+};
 
 export default { TextToPhonetic, InputPhonetic };
