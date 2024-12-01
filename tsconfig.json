@@ -5,12 +5,13 @@
     "declaration": true,
     "outDir": "./build", 
     "strict": true,
+    "jsx": "preserve",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"
   ],
   "exclude": [
     "node_modules",

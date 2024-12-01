@@ -2,8 +2,7 @@
 
 Phonetic transcription tools with react js for input, outputing, etc.
 
-<img title="React Phonetic Transcription" alt="React Phonetic Transcription" src="./docs/ilus.gif" style="width:300px" />
-
+<img title="React Phonetic Transcription" alt="React Phonetic Transcription" src="./docs/preview.gif" style="width:300px" />
 
 ## Future update
 
@@ -18,9 +17,9 @@ import { InputPhonetic, TextToPhonetic } from "react-phonetic-transcription";
 
 const [text,setText] = useState("");
 
-<TextToPhonetic>
+<span className="fonetis">
     {text}
-</TextToPhonetic>
+</span>
 
 <InputPhonetic
   sx={{
@@ -30,26 +29,4 @@ const [text,setText] = useState("");
     setValue(text + newValue);
   }}
 />
-```
-
-## API
-
-```js
-function InputPhonetic({
-    addValue, // for the output if you click the phonetic symbol
-    useRemember = true, // Remembering your last phonetic symbol
-    dataDefault = common_java,
-    height = "300px", // the height of phonetic keyboard
-    ...rest
-})
-```
-
-```js
-function TextToPhonetic({ children, ...rest }) {
-  return (
-    <span className="fonetis" {...rest}>
-      {children}
-    </span>
-  );
-}
 ```
